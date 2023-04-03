@@ -7,36 +7,48 @@ const female = document.querySelector(".female")
 let div = document.querySelector(".load")
 let searchcategory = document.querySelector("#search")
 
-let number =20;
+let number = 20;
 
-function show() {
+
+// adding funtion for showing and removing loaders
+/* ---------------------------------------------------------------------------------------- */
+function showloader() {
     div.classList.add("show")
 
 
 }
-function remove() {
+function removeloader() {
     div.classList.remove("show")
 
 
 }
-// added eventlistner for initial load 
 
+/* ---------------------------------------------------------------------------------------- */
+
+
+// added eventlistner for initial load 
+/* ---------------------------------------------------------------------------------------- */
 window.addEventListener("DOMContentLoaded", () => {
-    show()
-    fetch("https://randomuser.me/api?results=5")
+
+    //* This function is used to show loading icon
+    showloader()
+
+    fetch("https://randomuser.me/api?results=10")
         .then(res => res.json())
         .then(json => {
 
-            remove()
+            //* This function is used to remove loading icon after fetching
+            removeloader()
             let result = json.results;
-            // console.log(result)
             for (let i = 0; i < result.length; i++) {
 
-                // console.log(result[i]);
+                //* This function is used to create html elemnts to append on targeted element
                 general(result[i])
 
 
             }
+
+            //* the search bar filter the names in given datas
             searchcategory.addEventListener("keyup", () => {
                 let user_name = document.querySelectorAll(".para")
                 for (let i = 0; i < user_name.length; i++) {
@@ -49,6 +61,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
             })
 
+            //* This flter the male and female separately
+            /* ---------------------------------------------------------------------------------------- */
+
             male.addEventListener("click", () => {
                 child()
 
@@ -57,32 +72,20 @@ window.addEventListener("DOMContentLoaded", () => {
                 if (male.classList.contains("active")) {
                     let result = json.results;
                     for (let i = 0; i < result.length; i++) {
-                        console.log(result[i])
-
-                        // console.log(result[i]);
                         let gender = result[i].gender;
-                        // console.log(gender);
                         if (gender == "male") {
-                            // console.log(result[i])
                             general(result[i])
-                            // alert("L")
                         }
 
                     }
                 }
                 else {
                     let result = json.results;
-                    // console.log(result)
                     for (let i = 0; i < result.length; i++) {
-
-                        // console.log(result[i]);
                         general(result[i])
-
 
                     }
                 }
-
-
 
             })
             female.addEventListener("click", () => {
@@ -91,36 +94,29 @@ window.addEventListener("DOMContentLoaded", () => {
                 male.classList.remove("active")
                 if (female.classList.contains("active")) {
                     let result = json.results;
-                    console.log(result)
+                    // console.log(result)
                     for (let i = 0; i < result.length; i++) {
 
                         // console.log(resultparams[i]);
                         let gender = result[i].gender;
-                        console.log(gender);
                         if (gender == "female") {
                             general(result[i])
-
-
                         }
-
                     }
                 }
-                else{
+                else {
                     let result = json.results;
-            // console.log(result)
-            for (let i = 0; i < result.length; i++) {
-
-                // console.log(result[i]);
-                general(result[i])
-
-
-            }
+                    for (let i = 0; i < result.length; i++) {
+                        general(result[i])
+                    }
                 }
 
 
             })
+            /* ---------------------------------------------------------------------------------------- */
 
-         
+
+
 
 
 
@@ -133,6 +129,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 })
+
+/* ---------------------------------------------------------------------------------------- */
+
+ //* It removes all the child element to filter out gender
 function child() {
     while (img.hasChildNodes()) {
         img.firstChild.remove()
@@ -141,7 +141,9 @@ function child() {
 
 }
 
+/* ---------------------------------------------------------------------------------------- */
 
+ //* It creates the html element and store it by the given feature and append tothe html file.
 function general(datas) {
     let div = document.createElement("div")
     let a = document.createElement("a")
@@ -152,12 +154,8 @@ function general(datas) {
     let src = datas.picture.large;
     image.src = src;
     a.appendChild(image)
-    // console.log(a);
-
-
-
     let link = document.createElement("a")
-    link.setAttribute("class","link")
+    link.setAttribute("class", "link")
     link.href = `detail.html?id=${datas.id.value}`
     let name = document.createElement("p")
     name.setAttribute("class", "para")
