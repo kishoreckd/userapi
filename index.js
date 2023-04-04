@@ -31,10 +31,10 @@ function removeloader() {
 // added eventlistner for initial load 
 /* ---------------------------------------------------------------------------------------- */
 window.addEventListener("DOMContentLoaded", () => {
-    let number = 20;
+    let number = 21;
 
     showmore.addEventListener("click", () => {
-        number += 20;
+        number += 21;
         load()
     })
 
