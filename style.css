@@ -51,10 +51,9 @@ a{
 
 .load {
     font-size: 40px;
-    position: absolute;
-    /* left: 500px; */
+    position: fixed;
     display: none;
-    bottom: 350px;
+    bottom: 420px;
 }
 
 .load {

@@ -36,10 +36,9 @@ img{
 }
 .load {
     font-size: 40px;
-    position: absolute;
-    /* left: 500px; */
+    position: fixed;
     display: none;
-    bottom: 420px;
+    bottom: 450px;
 }
 
 .load {
