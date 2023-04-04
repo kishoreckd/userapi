@@ -30,7 +30,10 @@ img{
     display: flex;
     justify-content: space-around;
 }
-
+.header{
+    display: flex;
+    justify-content: space-between;
+}
 .show{
     display: block;
 }

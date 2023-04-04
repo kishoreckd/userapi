@@ -8,6 +8,8 @@ let details = document.querySelector(".details")
 
 let div = document.querySelector(".load")
 
+let header = document.querySelector(".header")
+
 
 
 // adding funtion for showing and removing loaders
@@ -50,6 +52,21 @@ window.addEventListener("DOMContentLoaded", () => {
                 let gender = document.createElement("h3")
                 gender.innerText = `Gender:${results.gender}`
                 details.appendChild(gender)
+
+                let genderdefine = document.createElement("div")
+                genderdefine.setAttribute("class","genders")
+                if (results.gender == "male") {
+                    genderdefine.innerHTML = `<i class="fa-solid fa-person"></i>`
+                    console.log(genderdefine);
+                    header.appendChild(genderdefine)
+
+                }
+                if (results.gender == "female") {
+                    genderdefine.innerHTML = `<i class="fa-solid fa-person-dress"></i>`
+                    console.log(genderdefine);
+                    header.appendChild(genderdefine)
+
+                }
 
 
                 let dob = document.createElement("h3")
