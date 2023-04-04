@@ -63,18 +63,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 }
 
-                //* the search bar filter the name in given datas
-                searchcategory.addEventListener("keyup", () => {
-                    let user_name = document.querySelectorAll(".para")
-                    for (let i = 0; i < user_name.length; i++) {
-                        if (user_name[i].innerText.toUpperCase().indexOf(searchcategory.value.toUpperCase()) != -1) {
-                            user_name[i].parentElement.parentElement.style.display = "block"
-                        }
-                        else {
-                            user_name[i].parentElement.parentElement.style.display = "none"
-                        }
-                    }
-                })
 
                 //* This flter the male and female separately
                 /* ---------------------------------------------------------------------------------------- */
@@ -182,35 +170,48 @@ function general(datas) {
     div.appendChild(name)
     img.appendChild(div)
 
-    let images = document.querySelectorAll("img") 
+    let images = document.querySelectorAll("img")
     let names = document.querySelectorAll("p")
 
-for(let k=0;k<images.length;k++){
-console.log(images)
-    images[k].addEventListener("mouseenter",()=>{
-        images[k].style.filter = "blur(2px)"
-        names[k].style.visibility = "visible"
-    })
+    for (let k = 0; k < images.length; k++) {
+        // console.log(images)
+        images[k].addEventListener("mouseenter", () => {
+            images[k].style.filter = "blur(2px)"
+            names[k].style.visibility = "visible"
+        })
 
-    images[k].addEventListener("mouseout",()=>{
-        images[k].style.filter = "blur(0px)"
-        names[k].style.visibility = "hidden"
-    })
+        images[k].addEventListener("mouseout", () => {
+            images[k].style.filter = "blur(0px)"
+            names[k].style.visibility = "hidden"
+        })
 
-    names[k].addEventListener("mouseenter",()=>{
-        images[k].style.filter = "blur(2px)"
-        names[k].style.visibility = "visible"
-    })
+        names[k].addEventListener("mouseenter", () => {
+            images[k].style.filter = "blur(2px)"
+            names[k].style.visibility = "visible"
+        })
 
-    names[k].addEventListener("mouseout",()=>{
-        images[k].style.filter = "blur(0px)"
-        names[k].style.visibility = "hidden"
-    })
+        names[k].addEventListener("mouseout", () => {
+            images[k].style.filter = "blur(0px)"
+            names[k].style.visibility = "hidden"
+        })
 
+    }
 }
-}
 
 
+//* the search bar filter the name in given datas
+searchcategory.addEventListener("keyup", () => {
+    let names = document.querySelectorAll(".para")
+    // console.log(names);
+    for (let i = 0; i < names.length; i++) {
+        if (names[i].innerText.toUpperCase().indexOf(searchcategory.value.toUpperCase()) != -1) {
+            names[i].parentElement.style.display = "block"
+        }
+        else {
+            names[i].parentElement.style.display = "none"
+        }
+    }
+})
 
 
 // redirect when clicking on the user card => detail.html?id=[idoftheuser] 
