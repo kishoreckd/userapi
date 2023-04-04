@@ -29,8 +29,8 @@ a{
 .para {
     position: relative;
     bottom: 79px;
-    left: 97px;
     visibility: hidden;
+    left: 97px;
 
 }
 .images{
@@ -48,14 +48,7 @@ a{
 }
 
 
-img:hover{
-    filter:blur(2px);
-}
 
-img:hover+.para{
-
-    visibility: visible;
-}
 .load {
     font-size: 40px;
     position: absolute;
